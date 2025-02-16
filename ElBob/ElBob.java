@@ -1,4 +1,5 @@
 package ElBob;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
@@ -13,6 +14,8 @@ public class ElBob {
     private static Clip currentClip;
     private static ImageIcon normalImage = new ImageIcon("images/lindu.png");
     private static ImageIcon relaxImage = new ImageIcon("images/relaxe.png");
+    private static ImageIcon sitImage = new ImageIcon("images/sentado.png");
+    private static ImageIcon phoneImage = new ImageIcon("images/cell.png");
 
     public static void main(String[] args) {
         playAudio("audios/hello.wav");
@@ -65,7 +68,9 @@ public class ElBob {
                     JMenuItem item12 = new JMenuItem("Rodar Python");
                     JMenuItem item13 = new JMenuItem("Rodar Java");
                     JMenuItem item14 = new JMenuItem("Relaxar");
-                    JMenuItem item15 = new JMenuItem("parar o relaxamento");
+                    JMenuItem item15 = new JMenuItem("Normal");
+                    JMenuItem item16 = new JMenuItem("Celular");
+                    JMenuItem item17 = new JMenuItem("Sentar");
 
                     item1.addActionListener(_ -> {
                         try {
@@ -188,53 +193,70 @@ public class ElBob {
                             processBuilder.start();
 
                             playAudio("audios/system.wav");
-                            bob.setIcon(new ImageIcon(talkr.getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH)));
+                            bob.setIcon(
+                                    new ImageIcon(talkr.getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH)));
                         } catch (IOException e1) {
                             e1.printStackTrace();
                         }
                     });
                     item11.addActionListener(_ -> {
                         try {
-                            ProcessBuilder processBuilder = new ProcessBuilder("cmd", "/c", "start conf/leng/cppCOM.exe");
+                            ProcessBuilder processBuilder = new ProcessBuilder("cmd", "/c",
+                                    "start conf/leng/cppCOM.exe");
                             processBuilder.inheritIO();
                             processBuilder.start();
 
                             playAudio("audios/scompilation.wav");
-                            bob.setIcon(new ImageIcon(talkr.getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH)));
+                            bob.setIcon(
+                                    new ImageIcon(talkr.getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH)));
                         } catch (IOException e1) {
                             e1.printStackTrace();
                         }
                     });
                     item12.addActionListener(_ -> {
                         try {
-                            ProcessBuilder processBuilder = new ProcessBuilder("cmd", "/c", "start conf/leng/pythonCOM.exe");
+                            ProcessBuilder processBuilder = new ProcessBuilder("cmd", "/c",
+                                    "start conf/leng/pythonCOM.exe");
                             processBuilder.inheritIO();
                             processBuilder.start();
 
                             playAudio("audios/scompilation.wav");
-                            bob.setIcon(new ImageIcon(talkr.getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH)));
+                            bob.setIcon(
+                                    new ImageIcon(talkr.getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH)));
                         } catch (IOException e1) {
                             e1.printStackTrace();
                         }
                     });
                     item13.addActionListener(_ -> {
                         try {
-                            ProcessBuilder processBuilder = new ProcessBuilder("cmd", "/c", "start conf/leng/javaCOM.exe");
+                            ProcessBuilder processBuilder = new ProcessBuilder("cmd", "/c",
+                                    "start conf/leng/javaCOM.exe");
                             processBuilder.inheritIO();
                             processBuilder.start();
 
                             playAudio("audios/scompilation.wav");
-                            bob.setIcon(new ImageIcon(talkr.getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH)));
+                            bob.setIcon(
+                                    new ImageIcon(talkr.getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH)));
                         } catch (IOException e1) {
                             e1.printStackTrace();
                         }
                     });
                     item14.addActionListener(_ -> {
-                        bob.setIcon(new ImageIcon(relaxImage.getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH)));
+                        bob.setIcon(
+                                new ImageIcon(relaxImage.getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH)));
                     });
                     item15.addActionListener(_ -> {
-                        bob.setIcon(new ImageIcon(normalImage.getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH)));
-                    });         
+                        bob.setIcon(
+                                new ImageIcon(normalImage.getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH)));
+                    });
+                    item16.addActionListener(_ -> {
+                        bob.setIcon(
+                                new ImageIcon(phoneImage.getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH)));
+                    });
+                    item17.addActionListener(_ -> {
+                        bob.setIcon(
+                                new ImageIcon(sitImage.getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH)));
+                    });
 
                     menu.add(item1);
                     menu.add(item2);
@@ -250,6 +272,8 @@ public class ElBob {
                     menu.add(item12);
                     menu.add(item13);
                     menu.add(item14);
+                    menu.add(item16);
+                    menu.add(item17);
                     menu.add(item15);
 
                     menu.show(frame, e.getX(), e.getY());
@@ -287,9 +311,9 @@ public class ElBob {
                     });
                 }
             });
-    
+
         } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
             e.printStackTrace();
         }
-    }    
+    }
 }
