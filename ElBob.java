@@ -9,6 +9,9 @@ import java.io.File;
 
 public class ElBob {
     private static JLabel bob;
+    private static Clip currentClip;
+    private static ImageIcon normalImage = new ImageIcon("images/lindu.png");
+    private static ImageIcon relaxImage = new ImageIcon("images/relaxe.png");
 
     public static void main(String[] args) {
         playAudio("audios/hello.wav");
@@ -60,6 +63,8 @@ public class ElBob {
                     JMenuItem item11 = new JMenuItem("Rodar C++");
                     JMenuItem item12 = new JMenuItem("Rodar Python");
                     JMenuItem item13 = new JMenuItem("Rodar Java");
+                    JMenuItem item14 = new JMenuItem("Relaxar");
+                    JMenuItem item15 = new JMenuItem("parar o relaxamento");
 
                     item1.addActionListener(_ -> {
                         try {
@@ -223,6 +228,12 @@ public class ElBob {
                             e1.printStackTrace();
                         }
                     });
+                    item14.addActionListener(_ -> {
+                        bob.setIcon(new ImageIcon(relaxImage.getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH)));
+                    });
+                    item15.addActionListener(_ -> {
+                        bob.setIcon(new ImageIcon(normalImage.getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH)));
+                    });         
 
                     menu.add(item1);
                     menu.add(item2);
@@ -237,6 +248,8 @@ public class ElBob {
                     menu.add(item11);
                     menu.add(item12);
                     menu.add(item13);
+                    menu.add(item14);
+                    menu.add(item15);
 
                     menu.show(frame, e.getX(), e.getY());
                 }
@@ -255,13 +268,17 @@ public class ElBob {
 
     public static void playAudio(String fileName) {
         try {
+            if (currentClip != null && currentClip.isRunning()) {
+                currentClip.stop();
+            }
+
             File audioFile = new File(fileName);
             AudioInputStream audioStream = AudioSystem.getAudioInputStream(audioFile);
-            Clip clip = AudioSystem.getClip();
-            clip.open(audioStream);
-            clip.start();
+            currentClip = AudioSystem.getClip();
+            currentClip.open(audioStream);
+            currentClip.start();
 
-            clip.addLineListener(event -> {
+            currentClip.addLineListener(event -> {
                 if (event.getType() == LineEvent.Type.STOP) {
                     SwingUtilities.invokeLater(() -> {
                         ImageIcon bobr = new ImageIcon("images/lindu.png");
@@ -269,9 +286,9 @@ public class ElBob {
                     });
                 }
             });
-
+    
         } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
             e.printStackTrace();
         }
-    }
+    }    
 }
