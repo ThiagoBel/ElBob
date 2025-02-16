@@ -13,3 +13,5 @@
 ### Importante!
 - Jamais mude os nomes dos arquivos/pastas, caso troque, irá dar erro.
 - Jamais troque os arquivo de lugar (colocar os audio numa pasta de imagens).
+### Detalhe:
+- é OpenSource, ou seja, você pode modificar tudo nele, entretanto você pode modificar imagens, audios e scritps, só não faça besteira.
