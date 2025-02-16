@@ -8,7 +8,6 @@ int main()
 {
     string caminho1 = "ElBob/ElBob.java";
     string caminho2 = "ElBob.ElBob";
-
     string init1 = "javac " + caminho1;
     string init2 = "start /B javaw " + caminho2;
 
@@ -19,12 +18,13 @@ int main()
         cout << "Carregando..." << endl;
         system(init1.c_str());
         cout << "Sucesso!" << endl;
+        cout << "Se essa aba (Terminal) nao fechar, reinstale, pois algo deu errado." << endl;
         system(init2.c_str());
         exit(0);
     }
     else
     {
-        cout << "O arquivo não existe, recomendo que reinstale!" << endl;
+        cout << "O arquivo nao existe, recomendo que reinstale!" << endl;
         exit(1);
     }
 

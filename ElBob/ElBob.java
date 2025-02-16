@@ -70,7 +70,8 @@ public class ElBob {
                     JMenuItem item14 = new JMenuItem("Relaxar");
                     JMenuItem item15 = new JMenuItem("Normal");
                     JMenuItem item16 = new JMenuItem("Celular");
-                    JMenuItem item17 = new JMenuItem("Sentar");
+                    JMenuItem item17 = new JMenuItem("Sentar na cadeira");
+                    JMenuItem item18 = new JMenuItem("Joguinho");
 
                     item1.addActionListener(_ -> {
                         try {
@@ -95,7 +96,7 @@ public class ElBob {
                                 "Minha memória ficou tão ruim que realmente me fez perder o emprego.\nAinda estou empregado. Só não consigo lembrar onde.",
                                 "Por que o médico está sempre calmo?\nPorque ele tem muitos pacientes.",
                                 "Qual é a comida favorita de um lobisomem?\nNão sei, os Lobisomens não são reais.",
-                                "Por que o livro de matemática parece tão triste?\nPor causa de todos os seus problemas.",
+                                "Por que o livro de matemática ece tão triste?\nPor causa de todos os seus problemas.",
                                 "O que ganha o melhor dentista do mundo?\n Uma pequena placa."
                         };
 
@@ -146,6 +147,16 @@ public class ElBob {
                             } catch (IOException e1) {
                                 e1.printStackTrace();
                             }
+                        } else if ("leng".equals(senha)) {
+                            JOptionPane.showMessageDialog(null,
+                                    "Linguagens usadas para o desenvolvimento:\nJava - Geral\nC++ - Configurações basicas.",
+                                    "Informações", JOptionPane.INFORMATION_MESSAGE);
+                        } else if ("info".equals(senha)) {
+                            Random geraridade = new Random();
+                            int idadeg = geraridade.nextInt(101);
+                            JOptionPane.showMessageDialog(null,
+                                    "Nome: Bob\nIdade:" + idadeg + "\nLinguagens: Java & C++\nPaís: Brasil", "Sobre",
+                                    JOptionPane.INFORMATION_MESSAGE);
                         } else {
                             playAudio("audios/incorrect.wav");
                             bob.setIcon(
@@ -257,6 +268,39 @@ public class ElBob {
                         bob.setIcon(
                                 new ImageIcon(sitImage.getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH)));
                     });
+                    item18.addActionListener(_ -> {
+                        String numeroi = JOptionPane.showInputDialog(null, "Escolha um numero de 1 a 10: ");
+                        int numeroa = Integer.parseInt(numeroi);
+                        if (numeroa == 10) {
+                            numeroa--;
+                            playAudio("audios/incorrect.wav");
+                            bob.setIcon(
+                                    new ImageIcon(talkr.getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH)));
+                            JOptionPane.showMessageDialog(null, "Errado, era " + numeroa + ".");
+                        } else if (numeroa < 1) {
+                            bob.setIcon(
+                                    new ImageIcon(talkr.getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH)));
+                            JOptionPane.showMessageDialog(null, "Não pode!");
+                            playAudio("audios/incorrect.wav");
+                        } else if (numeroa > 10) {
+                            playAudio("audios/incorrect.wav");
+                            bob.setIcon(
+                                    new ImageIcon(talkr.getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH)));
+                            JOptionPane.showMessageDialog(null, "Não pode!");
+                        } else if (numeroa >= 1 && numeroa <= 10) {
+                            numeroa++;
+                            playAudio("audios/incorrect.wav");
+                            bob.setIcon(
+                                    new ImageIcon(talkr.getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH)));
+                            JOptionPane.showMessageDialog(null, "Errado, era " + numeroa + ".");
+                        } else {
+                            bob.setIcon(
+                                    new ImageIcon(talkr.getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH)));
+                            JOptionPane.showMessageDialog(null, "Não pode!");
+                            playAudio("audios/incorrect.wav");
+                        }
+
+                    });
 
                     menu.add(item1);
                     menu.add(item2);
@@ -275,6 +319,7 @@ public class ElBob {
                     menu.add(item16);
                     menu.add(item17);
                     menu.add(item15);
+                    menu.add(item18);
 
                     menu.show(frame, e.getX(), e.getY());
                 }
