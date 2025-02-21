@@ -1,7 +1,7 @@
 # El Bob
 
 ### Requerimento para funcionar:
-- Ter o java instalado
+- Ter o java (recomendo o 23.0.2) instalado
 - Apenas Windows
 ### Dicas:
 - Aperte no bob com o botão esquerdo do mouse para ver as informações.
